@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>Populate all related package delivery fields when the package reference is added.</description>
+        <field>package</field>
+        <global>true</global>
+        <messages/>
+        <name>PopulatePackageFieldsOnReferenceChange</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+   if (newValue == '') {
+	   g_form.setValue("deliver_to", "");
+	   g_form.setValue("delivery_location", "");
+	   g_form.setValue("run", "");
+      return;
+   }
+
+   //set values for package related fields based on the package added as a reference.
+	var ga = new GlideAjax("RetrievePackageInfo");
+	ga.addParam("sysparm_name", "getPackageInfo");
+	ga.addParam('sysparm_pkg_id', newValue);
+	ga.getXML(ajaxResponse);
+	
+	function ajaxResponse(serverResponse) {
+		// get result element and attributes
+		
+		var result = serverResponse.responseXML.getElementsByTagName("result");
+		var message = result[0].getAttribute("message");
+		
+		// get package elements
+		var info = serverResponse.responseXML.getElementsByTagName("pkgInfo");
+		
+		for(var i = 0; i < info.length; i++) {
+			var name = info[i].getAttribute("name");
+			var value = info[i].getAttribute("value");
+			
+			if(name == 'deliver_to'){
+				g_form.setValue('deliver_to',value);
+			}
+			if(name == 'requester_office'){
+				g_form.setValue('delivery_location',value);
+			}
+			if(name == 'run'){
+				g_form.setValue('run',value);
+			}
+		}
+	}
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>nicholasmyers</sys_created_by>
+        <sys_created_on>2017-03-23 21:35:48</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>52fcce7f0f61f60012e4348ce1050e24</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>PopulatePackageFieldsOnReferenceChange</sys_name>
+        <sys_overrides display_value="">global</sys_overrides>
+        <sys_package display_value="Receiving &amp; Package Management" source="x_casus_receiving">86a7d81e6fad3600ad6cd4a21c3ee464</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Receiving &amp; Package Management">86a7d81e6fad3600ad6cd4a21c3ee464</sys_scope>
+        <sys_update_name>sys_script_client_52fcce7f0f61f60012e4348ce1050e24</sys_update_name>
+        <sys_updated_by>nicholasmyers</sys_updated_by>
+        <sys_updated_on>2017-03-27 15:30:41</sys_updated_on>
+        <table>x_casus_receiving_package_delivery</table>
+        <type>onChange</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

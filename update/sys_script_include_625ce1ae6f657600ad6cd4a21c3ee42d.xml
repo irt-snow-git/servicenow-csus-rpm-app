@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_casus_receiving.RetrievePackageCarrierInfo</api_name>
+        <client_callable>true</client_callable>
+        <description>Script to return package carrier details. Receives tracking number from the client, parses number out, and determines which carrier and service depending on the carrier's definitions.</description>
+        <name>RetrievePackageCarrierInfo</name>
+        <script><![CDATA[var RetrievePackageCarrierInfo = Class.create();
+RetrievePackageCarrierInfo.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	
+	retrievePackageInfo: function() {
+		//build a new carrier xml response element for the result
+		var result = this.newItem("result");
+		var trackingNumber = this.getParameter('sysparm_tracking_number');
+		
+		result.setAttribute("message", "returning package information");
+		
+		var carrier = this._parsePackageCarrier(trackingNumber);
+		var service = "";
+		
+		// if the carrier is not found, don't waste time searching for the service type
+		if(carrier != '') {
+			//service is found, pass into filter
+			service = this._parsePackageService(carrier, trackingNumber);
+		} else if(carrier == "other") {
+			service = "Other";
+		} else {
+			gs.addInfoMessage("A carrier was not identified by the tracking number entered. Please select or enter a carrier below.");
+			service = ""; //will be assigned to "other" on client side
+		}
+		
+		//add the retrieved values to the xml item
+		this._addPackageInfo('carrier', carrier);
+		this._addPackageInfo('service', service);
+		
+		//all package info added to the item via _addPackageInfo
+		return;
+		
+	},
+	
+	//add a list of package attributes to the response denoted by a name and value for easy determination
+	_addPackageInfo: function(name, value) {
+		var pkgInfo = this.newItem("pkgInfo");
+		pkgInfo.setAttribute("name", name);
+		pkgInfo.setAttribute("value", value);
+	},
+	
+	
+	/*
+		The below functions are the only functions which should require changes when
+		a service is added, modified, or deleted.
+	*/
+	
+	//determine the carrier based on the format of the tracking number
+	_parsePackageCarrier: function(trackingNumber) {
+		
+		if(trackingNumber.toUpperCase().indexOf("1Z") == 0) { //All UPS package tracking numbers begin with '1Z'
+			return "ups"; //return ups value
+			
+			
+		} else if( //tracking number has a length of 22 and starts with certain chars --- USPS Package
+			(trackingNumber.length == 22 && 
+				(trackingNumber.indexOf("94001") == 0) ||
+				(trackingNumber.indexOf("92055") == 0) ||
+				(trackingNumber.indexOf("94073") == 0) ||
+				(trackingNumber.indexOf("93033") == 0) ||
+				(trackingNumber.indexOf("92701") == 0) ||
+				(trackingNumber.indexOf("92088") == 0) ||
+				(trackingNumber.indexOf("92021") == 0)
+			) || 
+			
+				//or it's 20 long and of the following
+			(trackingNumber.length == 20 &&
+				(trackingNumber.indexOf("14000") == 0) ||
+				(trackingNumber.indexOf("70000") == 0)
+			) ||
+				 //or it's 13 long and follows the below format
+			(trackingNumber.length == 13 &&
+				(trackingNumber.indexOf('EC') == 0) ||
+				(trackingNumber.indexOf('EA') == 0) ||
+				(trackingNumber.indexOf('CP') == 0)
+			) ||
+				//or it's 10 long and begins with 82
+				(trackingNumber.length == 10 && trackingNumber.indexOf('82') == 0)
+		){ 
+			return "usps"; // it's USPS!
+			
+			
+		} else if( //FedEx Packages are 12 digits and all numbers
+			(((trackingNumber.length == 12) || (trackingNumber.length == 32) || 
+			  (trackingNumber.length == 34) || (trackingNumber.length == 14) || 
+			  (trackingNumber.length == 15) ||
+			(trackingNumber.length == 22 && trackingNumber.indexOf("96") == 0)) //22 digit fedex numbers begin with '96'
+			&& (!isNaN(trackingNumber)))
+		){ 
+			return "fedex"; // it's FedEx!
+			
+			
+			//OnTrac Packages are 15 digits long, most commonly begin with C, but some begin with D.
+		} else if(((trackingNumber.toUpperCase().indexOf("C")) == 0 || (trackingNumber.toUpperCase().indexOf("D") == 0)) && (trackingNumber.length == 15)) { 
+			
+			return "ontrac"; //return OnTrac
+			
+			//DHL Packages either have a tracking number beginning with JD or JDD, or are 10 digit numbers
+		} else if(((trackingNumber.toUpperCase().indexOf("JD")) == 0 || (trackingNumber.toUpperCase().indexOf("JJD") == 0)) || 
+				 (trackingNumber.length == 10 && (!isNaN(trackingNumber)))) { 
+			return "dhl"; //return tDHL
+			
+		} else {
+			return ""; //else it's something else, which will be picked up on the client side and assigned to "other"
+		}
+	},
+	
+	
+	//calls a number of the below functions depending on the carrier sys_id
+	_parsePackageService: function(carrier, trackingNumber) {
+		
+		var service; //sys_id of the service type of the package
+		
+		switch(carrier) {
+			case 'usps': //USPS
+				service = this._getUSPSServices(trackingNumber);
+				break;
+				
+			case 'ups': //UPS
+				service = this._getUPSServices(trackingNumber);
+				break;
+				
+			case 'fedex': //FedEx
+				service = this._getFEDEXServices(trackingNumber);
+				break;
+			
+			case 'ontrac': //OnTrac
+				service = this._getONTRACServices(trackingNumber);
+				break;
+				
+			case 'dhl': //DHL
+				service = this._getDHLServices(trackingNumber);
+				break;
+				
+			//Add any additional cases here
+				
+			default:
+				service = '';
+				break;
+		}
+		return service;
+	},
+	
+	//the functions below have a similar structure:
+	//1. Determine the service level (if applicable) using the carrier defined processes for setting shipping classifications
+	//2. return sys_id for the service level
+	
+	//since we aren't actually 'tracking' the package, we don't need to verify the whole string incl check digit of the numbers
+	//we already know who the carrier is, we just need to get the service classification for urgency purposes
+	
+	//they are all created as different functions for easy extendability, modification
+	
+	//USPS Services
+	_getUSPSServices: function(trackingNumber) {
+		
+		//perform specific tracking number calculations here
+		var svcType;
+		var typeStr;
+		
+		//we already know it's USPS, now determine priority level based on tracking number
+		if(trackingNumber.length == 22) { //longer tracking number format
+			svcType = trackingNumber.substring(0,5);
+			 
+			if( //priority express shipping
+				(svcType == "92701"))
+			{
+				typeStr = "priority_express"; //return priority express
+				
+			} else if(//priority
+				(svcType == "92055") ||
+				(svcType == "14000") ||
+				(svcType == "93033"))
+			{ 
+				typeStr = "priority"; //regular priority
+					  
+			} else if(//regular delivery 
+				(svcType == "94001") || 
+				(svcType == "94073") ||
+				(svcType == "92088") ||
+				(svcType == "92021"))
+			{
+				typeStr = "ground"; //regular shipping
+				
+			} else {//not specified
+				typeStr = "";
+			}
+			
+		} else if(trackingNumber.length == 20) {
+			svcType = trackingNumber.substring(0, 5);
+			
+			
+			if(svcType == "7000") { //certified mail
+				typeStr = "ground";
+				
+			} else if (svcType == "1400") { //priority
+				typeStr = "prioriry";
+				
+			}
+					  
+		} else if(trackingNumber.length == 13) {
+			svcType = trackingNumber.substring(0,2);
+			
+			//or it's 13 long and follows the below format
+			if(//priority express int'l
+				(svcType == 'EC') ||
+				(svcType == 'EA')){
+				
+				typeStr = "priority_express";
+				
+			} else if(svcType == 'CP') { //regular priority international
+				
+				typeStr = "priority";
+				
+			} else if(svcType == 'RA') { //registered international
+				typeStr = "ground";
+			}
+		} else if(trackingNumber.length == 10) {
+			//or it's 10 long and begins with 82
+			if(trackingNumber.indexOf('82') == 0) { //Global Express
+				typeStr = "priority_express";
+			}
+			
+		} else {
+			typeStr = "ground"; //default to standard shipping type
+		}
+		
+		
+		return typeStr;
+	},
+	
+	//UPS Services
+	_getUPSServices: function(trackingNumber) {
+		/*
+			* The first two characters must be "1Z".
+			* The next 6 characters we fill with our UPS account number "XXXXXX".
+			* The next 2 characters denote the service type:
+				 "01" for Next Day Air shipments.
+				 "02" for Second Day Air shipments.
+				 "03" for Ground shipments.
+			* The next 5 characters is our invoice number (our invoices are 6 digits; we drop the first digit, e.g., the 123456 invoice would yield 23456 characters).
+			* The next 2 digits is the package number, zero filled. E.g., package 1 is "01", 2 is "02".
+			* The last and final character is the check digit.
+		*/
+		
+		//perform specific tracking number calculations here 
+		//nums 0-7 are 1Z and acctNum, 10-14 are the others
+		var svcType = trackingNumber.substring(8, 10); //service type
+		var typeStr;
+		
+		if(svcType == "01"){
+			typeStr = "next_day_air"; //Next Day Air
+		} else if(svcType == "02") {
+			typeStr = "second_day_air"; //Second Day Air
+		} else if (svcType == "03") {
+			typeStr = "ground"; //Ground
+		} else {
+			typeStr = "";
+		}
+
+		return typeStr; //return the service if auto-identified
+		
+	},
+	
+	//FedEx Services
+	_getFEDEXServices: function(trackingNumber) {
+		
+		//perform specific tracking number calculations here
+		var svcType;
+		var typeStr;
+		
+		//FedEx tracking number format:
+		//Express: total barcode length is either: (32 digits, with the tracking number up to 12 digits, from index 17 to 28)
+		//or (34 digits, with the tracking number up to 14 digits, from index 21 to 34)
+		
+		//ground: total barcode length is either: (22 digits, beginning with '96', and tracking number up to 15 digits, from index 8 to 22)
+		//or (34 digits, with the tracking number up to 14 digits, from index 21 to 34)
+		
+		if(trackingNumber.length == 12 || ((trackingNumber.length == 32 || trackingNumber.length == 34) && trackingNumber.indexOf("96") != 0)) { //express shipping numbers
+			typeStr = "express"; // express
+			
+		} else if((trackingNumber.length == 22 || trackingNumber.length == 34) && trackingNumber.indexOf("96") == 0) { //fedex ground numbers begin with '96'
+			typeStr = "ground"; //Ground
+			
+		}
+		
+		return typeStr;
+	},
+	
+	
+	//OnTrac Services
+	_getONTRACServices: function(trackingNumber) {
+		
+		//return moderate tracking service, as the algorithm for determining priority is not readily available by the carrier
+		var typeStr = "ground"; 
+		return typeStr;
+	},
+	
+	
+	//DHL Services
+	_getDHLServices: function(trackingNumber) {
+		
+		//return ground service, as the algorithm for determining priority is not readily available by the carrier
+		var typeStr = "ground";
+		return typeStr;
+	},
+	
+    type: 'RetrievePackageCarrierInfo'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>nicholasmyers</sys_created_by>
+        <sys_created_on>2017-03-19 22:16:21</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>625ce1ae6f657600ad6cd4a21c3ee42d</sys_id>
+        <sys_mod_count>56</sys_mod_count>
+        <sys_name>RetrievePackageCarrierInfo</sys_name>
+        <sys_package display_value="Receiving &amp; Package Management" source="x_casus_receiving">86a7d81e6fad3600ad6cd4a21c3ee464</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Receiving &amp; Package Management">86a7d81e6fad3600ad6cd4a21c3ee464</sys_scope>
+        <sys_update_name>sys_script_include_625ce1ae6f657600ad6cd4a21c3ee42d</sys_update_name>
+        <sys_updated_by>nicholasmyers</sys_updated_by>
+        <sys_updated_on>2017-03-23 23:59:40</sys_updated_on>
+    </sys_script_include>
+</record_update>

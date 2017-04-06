@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="state" table="x_casus_receiving_package" version="3">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Received</label>
+            <language>en</language>
+            <name>x_casus_receiving_package</name>
+            <sequence>1</sequence>
+            <sys_created_by>nicholasmyers</sys_created_by>
+            <sys_created_on>2017-03-19 19:57:20</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>934119e26f657600ad6cd4a21c3ee42c</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>nicholasmyers</sys_updated_by>
+            <sys_updated_on>2017-03-19 19:57:41</sys_updated_on>
+            <value>received</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Sorting</label>
+            <language>en</language>
+            <name>x_casus_receiving_package</name>
+            <sequence>2</sequence>
+            <sys_created_by>nicholasmyers</sys_created_by>
+            <sys_created_on>2017-03-19 19:57:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>7d61d1ee6f257600ad6cd4a21c3ee492</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>nicholasmyers</sys_updated_by>
+            <sys_updated_on>2017-03-19 19:57:43</sys_updated_on>
+            <value>sorting</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Out for Delivery</label>
+            <language>en</language>
+            <name>x_casus_receiving_package</name>
+            <sequence>3</sequence>
+            <sys_created_by>nicholasmyers</sys_created_by>
+            <sys_created_on>2017-03-19 19:57:49</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>517195a26f657600ad6cd4a21c3ee4ad</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>nicholasmyers</sys_updated_by>
+            <sys_updated_on>2017-03-19 19:57:56</sys_updated_on>
+            <value>out_for_delivery</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Delivered</label>
+            <language>en</language>
+            <name>x_casus_receiving_package</name>
+            <sequence>4</sequence>
+            <sys_created_by>nicholasmyers</sys_created_by>
+            <sys_created_on>2017-03-19 19:58:00</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>b88159e26f657600ad6cd4a21c3ee4a2</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>nicholasmyers</sys_updated_by>
+            <sys_updated_on>2017-03-19 19:58:05</sys_updated_on>
+            <value>delivered</value>
+        </sys_choice>
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>state</element>
+            <name>x_casus_receiving_package</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>nicholasmyers</sys_created_by>
+            <sys_created_on>2017-03-19 19:57:20</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>b96199e26f657600ad6cd4a21c3ee43e</sys_id>
+            <sys_mod_count>12</sys_mod_count>
+            <sys_name>state</sys_name>
+            <sys_package display_value="Receiving &amp; Package Management" source="x_casus_receiving">86a7d81e6fad3600ad6cd4a21c3ee464</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Receiving &amp; Package Management">86a7d81e6fad3600ad6cd4a21c3ee464</sys_scope>
+            <sys_update_name>sys_choice_x_casus_receiving_package_state</sys_update_name>
+            <sys_updated_by>nicholasmyers</sys_updated_by>
+            <sys_updated_on>2017-03-19 19:58:05</sys_updated_on>
+        </sys_choice_set>
+    </sys_choice>
+</record_update>

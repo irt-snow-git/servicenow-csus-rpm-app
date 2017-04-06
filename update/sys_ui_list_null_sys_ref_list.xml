@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_list parent="" relationship="" sys_domain="global" table="null" version="2" view="sys_ref_list">
+        <sys_ui_list action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element/>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <name>null</name>
+            <parent/>
+            <position/>
+            <relationship/>
+            <sum>false</sum>
+            <sys_class_name>sys_ui_list</sys_class_name>
+            <sys_created_by>nicholasmyers</sys_created_by>
+            <sys_created_on>2017-04-05 21:10:35</sys_created_on>
+            <sys_customer_update>true</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_id>dc3589c00f4a3e0012e4348ce1050e4a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>null</sys_name>
+            <sys_package display_value="Receiving &amp; Package Management" source="x_casus_receiving">86a7d81e6fad3600ad6cd4a21c3ee464</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Receiving &amp; Package Management">86a7d81e6fad3600ad6cd4a21c3ee464</sys_scope>
+            <sys_update_name>sys_ui_list_null_sys_ref_list</sys_update_name>
+            <sys_updated_by>nicholasmyers</sys_updated_by>
+            <sys_updated_on>2017-04-05 21:10:35</sys_updated_on>
+            <sys_user/>
+            <view display_value="Reference List" name="sys_ref_list">72668e430a0a3c74000ad2c9f83ba47e</view>
+            <view_name/>
+        </sys_ui_list>
+    </sys_ui_list>
+</record_update>

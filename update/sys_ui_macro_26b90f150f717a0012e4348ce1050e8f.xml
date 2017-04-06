@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_macro">
+    <sys_ui_macro action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <category>general</category>
+        <description/>
+        <media_type/>
+        <name>accept_signature</name>
+        <scoped_name>x_casus_receiving_accept_signature</scoped_name>
+        <sys_class_name>sys_ui_macro</sys_class_name>
+        <sys_created_by>nicholasmyers</sys_created_by>
+        <sys_created_on>2017-03-28 17:46:49</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>26b90f150f717a0012e4348ce1050e8f</sys_id>
+        <sys_mod_count>16</sys_mod_count>
+        <sys_name>accept_signature</sys_name>
+        <sys_package display_value="Receiving &amp; Package Management" source="x_casus_receiving">86a7d81e6fad3600ad6cd4a21c3ee464</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Receiving &amp; Package Management">86a7d81e6fad3600ad6cd4a21c3ee464</sys_scope>
+        <sys_update_name>sys_ui_macro_26b90f150f717a0012e4348ce1050e8f</sys_update_name>
+        <sys_updated_by>nicholasmyers</sys_updated_by>
+        <sys_updated_on>2017-03-28 20:59:50</sys_updated_on>
+        <xml><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	<j:if test="$[jvar_isMSIE8 || jvar_isMSIE7]">
+		<g:requires name="scripts/flashcanvas.jsx" includes="true"/>
+	</j:if>
+	<g:requires name="scripts/jquery.signaturepad.min.jsx" includes="true" />
+	<g:requires name="scripts/signature_pad.jsx" includes="true" />
+	<g:requires name="scripts/json2.jsx" includes="true" />
+	<g:requires name="styles/jquery.signaturepad.cssx" includes="true" />
+	<g:requires name="styles/heisenberg/heisenberg_all.cssx" includes="true" />
+	<g:requires name="scripts/classes/ajax/GlideAjax.jsx" includes="true" />
+	
+	<g:ui_form>
+		<input type="hidden" id="sysparm_retrieve_signature" value="$[gs.getProperty('com.snc.signaturepad.retrieveSignature')]" />
+		<input type="hidden" id="sysparm_draw_only" value="$[sysparm_draw_only]" />
+		<input type="hidden" id="document_id" name="document_id" value="${sysparm_document_id}"></input>
+		<input type="hidden" id="redirect_url" name="redirect_url" value="${sysparm_redirect_url}"/>
+		<input type="hidden" id="table_name" name="table_name" value="${sysparm_table_name}"></input>-->
+		<div class="sigPad">
+			<j:if test="${sysparm_draw_only != 'true'}">
+				<div class="typeItDesc">
+					<label for="name">${gs.getMessage('Print your name')}</label>
+					<input type="text" name="signed_name" id="signed_name" class="signed_name" />
+				</div>
+				<p class="typeItDesc">${gs.getMessage('Review your signature')}</p>
+				<p class="drawItDesc">${gs.getMessage('Draw your signature')}</p>
+				<ul class="nav nav-tabs sn-tabs-basic sigNav">
+					<li class="typeIt"><a href="#type-it" id='typeItLink'>${gs.getMessage('Type it')}</a></li>
+					<li class="drawIt"><a href="#draw-it" id='drawItLink'>${gs.getMessage('Draw it')}</a></li>
+					<a class="clearButton" href="#clear">${gs.getMessage('Clear')}</a>
+				</ul>
+			</j:if>
+			<j:if test="${sysparm_draw_only == 'true'}">
+				<p class="drawItDesc">${gs.getMessage('Draw your signature')}</p>
+				<div class="sigNav">
+					<a class="clearButton" href="#clear">${gs.getMessage('Clear')}</a>
+				</div>
+			</j:if>
+			<div class="sig sigWrapper">
+				<div class="typed"></div>
+				<canvas class="pad" width="400" height="150"></canvas>
+				<input type="hidden" name="output" class="output"/>
+			</div>
+			<p/>
+			${gs.getMessage('Filling in the following information will constitute your eSignature and will have the same legal impact as signing a printed version of this document.')}
+			<div style="float:right">
+			<button id='acceptSignature' onclick="submit()" class="btn btn-primary">${gs.getMessage('Sign')}</button>
+				<input type="hidden" id="btn_clicked" name="btn_clicked" value="none"></input>
+			</div>
+		</div>
+	</g:ui_form>
+</j:jelly>]]></xml>
+    </sys_ui_macro>
+</record_update>

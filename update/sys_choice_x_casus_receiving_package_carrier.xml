@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="carrier" table="x_casus_receiving_package" version="3">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>carrier</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>UPS</label>
+            <language>en</language>
+            <name>x_casus_receiving_package</name>
+            <sequence>1</sequence>
+            <sys_created_by>nicholasmyers</sys_created_by>
+            <sys_created_on>2017-03-23 19:19:46</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>4d2f29330f61f60012e4348ce1050e3e</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>nicholasmyers</sys_updated_by>
+            <sys_updated_on>2017-03-23 19:20:21</sys_updated_on>
+            <value>ups</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>carrier</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>USPS</label>
+            <language>en</language>
+            <name>x_casus_receiving_package</name>
+            <sequence>2</sequence>
+            <sys_created_by>nicholasmyers</sys_created_by>
+            <sys_created_on>2017-03-23 19:19:51</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>5e2f61ff0f21f60012e4348ce1050edc</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>nicholasmyers</sys_updated_by>
+            <sys_updated_on>2017-03-23 19:20:24</sys_updated_on>
+            <value>usps</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>carrier</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>FedEx</label>
+            <language>en</language>
+            <name>x_casus_receiving_package</name>
+            <sequence>3</sequence>
+            <sys_created_by>nicholasmyers</sys_created_by>
+            <sys_created_on>2017-03-23 19:19:58</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>7b2f69330f61f60012e4348ce1050e33</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>nicholasmyers</sys_updated_by>
+            <sys_updated_on>2017-03-23 19:20:26</sys_updated_on>
+            <value>fedex</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>carrier</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>DHL</label>
+            <language>en</language>
+            <name>x_casus_receiving_package</name>
+            <sequence>4</sequence>
+            <sys_created_by>nicholasmyers</sys_created_by>
+            <sys_created_on>2017-03-23 19:20:05</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>953fa5330f61f60012e4348ce1050e80</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>nicholasmyers</sys_updated_by>
+            <sys_updated_on>2017-03-23 19:20:28</sys_updated_on>
+            <value>dhl</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>carrier</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>OnTrac</label>
+            <language>en</language>
+            <name>x_casus_receiving_package</name>
+            <sequence>5</sequence>
+            <sys_created_by>nicholasmyers</sys_created_by>
+            <sys_created_on>2017-03-23 19:20:12</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>833fedbf0f21f60012e4348ce1050e18</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>nicholasmyers</sys_updated_by>
+            <sys_updated_on>2017-03-23 19:20:30</sys_updated_on>
+            <value>ontrac</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>carrier</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Other</label>
+            <language>en</language>
+            <name>x_casus_receiving_package</name>
+            <sequence>6</sequence>
+            <sys_created_by>nicholasmyers</sys_created_by>
+            <sys_created_on>2017-03-22 23:25:12</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_id>0bbd15e36fe9b600ad6cd4a21c3ee4fc</sys_id>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_updated_by>nicholasmyers</sys_updated_by>
+            <sys_updated_on>2017-03-23 19:20:32</sys_updated_on>
+            <value>other</value>
+        </sys_choice>
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>carrier</element>
+            <name>x_casus_receiving_package</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>nicholasmyers</sys_created_by>
+            <sys_created_on>2017-03-22 23:25:13</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>88cd9d276fe9b600ad6cd4a21c3ee4e7</sys_id>
+            <sys_mod_count>19</sys_mod_count>
+            <sys_name>carrier</sys_name>
+            <sys_package display_value="Receiving &amp; Package Management" source="x_casus_receiving">86a7d81e6fad3600ad6cd4a21c3ee464</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Receiving &amp; Package Management">86a7d81e6fad3600ad6cd4a21c3ee464</sys_scope>
+            <sys_update_name>sys_choice_x_casus_receiving_package_carrier</sys_update_name>
+            <sys_updated_by>nicholasmyers</sys_updated_by>
+            <sys_updated_on>2017-03-23 19:20:32</sys_updated_on>
+        </sys_choice_set>
+    </sys_choice>
+</record_update>

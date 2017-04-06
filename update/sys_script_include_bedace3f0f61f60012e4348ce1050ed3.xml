@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_casus_receiving.RetrievePackageInfo</api_name>
+        <client_callable>true</client_callable>
+        <description>Returns details about a package being delivered</description>
+        <name>RetrievePackageInfo</name>
+        <script><![CDATA[var RetrievePackageInfo = Class.create();
+RetrievePackageInfo.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	
+	
+	getPackageInfo: function() {
+		// build new response xml element for result
+		var result = this.newItem("result");
+		var rec = new GlideRecord("x_casus_receiving_package");
+		rec.get(this.getParameter('sysparm_pkg_id'));
+		result.setAttribute("message", "returning package information");
+		
+		//add some nodes with name and value attributes
+		//call internal function and pass field attributes
+		this._addPkgInfo("number", rec.number);
+		this._addPkgInfo("sys_id", rec.sys_id);
+		this._addPkgInfo("carrier", rec.carrier);
+		this._addPkgInfo("run", rec.run);
+		this._addPkgInfo("state", rec.state);
+		this._addPkgInfo("tracking_number", rec.tracking_number);
+		this._addPkgInfo("deliver_to", rec.deliver_to);
+		this._addPkgInfo("requester_office", rec.requester_office);
+		this._addPkgInfo("department", rec.department);
+		this._addPkgInfo("department_office", rec.department_office);
+	},
+	
+	//function to add information to return to the user 
+	_addPkgInfo : function(name, value) {
+		var pkgInfo = this.newItem("pkgInfo");
+		pkgInfo.setAttribute("name", name);
+		pkgInfo.setAttribute("value", value);
+	},
+
+    type: 'RetrievePackageInfo'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>nicholasmyers</sys_created_by>
+        <sys_created_on>2017-03-23 21:29:39</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>bedace3f0f61f60012e4348ce1050ed3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>RetrievePackageInfo</sys_name>
+        <sys_package display_value="Receiving &amp; Package Management" source="x_casus_receiving">86a7d81e6fad3600ad6cd4a21c3ee464</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Receiving &amp; Package Management">86a7d81e6fad3600ad6cd4a21c3ee464</sys_scope>
+        <sys_update_name>sys_script_include_bedace3f0f61f60012e4348ce1050ed3</sys_update_name>
+        <sys_updated_by>nicholasmyers</sys_updated_by>
+        <sys_updated_on>2017-03-23 21:29:39</sys_updated_on>
+    </sys_script_include>
+</record_update>

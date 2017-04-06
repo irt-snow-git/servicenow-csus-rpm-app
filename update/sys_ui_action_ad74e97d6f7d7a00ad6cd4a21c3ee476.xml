@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_ui_action">
+    <sys_ui_action action="INSERT_OR_UPDATE">
+        <action_name>sysverb_edit_o2m</action_name>
+        <active>false</active>
+        <client>false</client>
+        <comments>One to Many (reference floats)</comments>
+        <condition>(new GlideRecord(current.getTableName())).canWrite() &amp;&amp; RP.isOneToMany() &amp;&amp; !RP.getListControl().isOmitEditButton()</condition>
+        <form_action>false</form_action>
+        <form_button>false</form_button>
+        <form_context_menu>false</form_context_menu>
+        <form_link>false</form_link>
+        <hint/>
+        <list_action>true</list_action>
+        <list_banner_button>true</list_banner_button>
+        <list_button>false</list_button>
+        <list_choice>false</list_choice>
+        <list_context_menu>false</list_context_menu>
+        <list_link>false</list_link>
+        <list_save_with_form_button>false</list_save_with_form_button>
+        <name>Edit...</name>
+        <onclick/>
+        <order>200</order>
+        <script><![CDATA[/*var uri = action.getGlideURI();
+var path = uri.getFileFromPath();
+uri.set('sysparmm2m_ref', current.getTableName());
+uri.set('sysparm_collection_related_file', current.getTableName());
+uri.set('sysparm_query', 'active=true^state=received^ORstate=sorting');
+uri.set('sysparm_stack', 'no');
+uri.set('sysparm_form_type', 'o2m');
+//uri.set('sysparm_collection_relationship', null);
+action.setRedirectURL(uri.toString('sys_m2m_template.do'));*/
+
+var uri = action.getGlideURI();
+var path = uri.getFileFromPath();
+uri.set('sysparm_m2m_ref', current.getTableName());
+uri.set('sysparm_collection_related_file', current.getTableName());
+uri.set('sysparm_form_type', 'o2m');
+uri.set('sysparm_stack', 'no');
+updateQuery(uri);
+action.setRedirectURL(uri.toString('sys_m2m_template.do'));
+
+
+/* filter stories based on parent release team */
+function updateQuery(uri) {
+	var filter = '';
+	var parentID = uri.get('sysparm_collectionID');
+	var parent   = uri.get('sysparm_collection');
+	var viewName = uri.get('sysparm_view');
+	var query = "active=true^state=received^ORstate=sorting";
+	
+	uri.set('sysparm_query',query);
+}]]></script>
+        <show_insert>true</show_insert>
+        <show_multiple_update>false</show_multiple_update>
+        <show_query>false</show_query>
+        <show_update>true</show_update>
+        <sys_class_name>sys_ui_action</sys_class_name>
+        <sys_created_by>nicholasmyers</sys_created_by>
+        <sys_created_on>2017-03-29 23:44:08</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>ad74e97d6f7d7a00ad6cd4a21c3ee476</sys_id>
+        <sys_mod_count>30</sys_mod_count>
+        <sys_name>Edit...</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Receiving &amp; Package Management" source="x_casus_receiving">86a7d81e6fad3600ad6cd4a21c3ee464</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Receiving &amp; Package Management">86a7d81e6fad3600ad6cd4a21c3ee464</sys_scope>
+        <sys_update_name>sys_ui_action_ad74e97d6f7d7a00ad6cd4a21c3ee476</sys_update_name>
+        <sys_updated_by>nicholasmyers</sys_updated_by>
+        <sys_updated_on>2017-03-30 22:04:19</sys_updated_on>
+        <table>x_casus_receiving_package</table>
+        <ui11_compatible>true</ui11_compatible>
+        <ui16_compatible>true</ui16_compatible>
+    </sys_ui_action>
+</record_update>

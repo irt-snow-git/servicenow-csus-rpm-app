@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_email">
+    <sys_script_email action="INSERT_OR_UPDATE">
+        <name>x_casus_receiving_package_delivery_script_1</name>
+        <new_lines_to_html>false</new_lines_to_html>
+        <script><![CDATA[//determine what to print depending on who receives the package, for better readability.
+if(current.received_by == current.deliver_to){ 
+	template.print("you"); 
+} else { 
+	template.print(current.received_by.getDisplayValue());
+}]]></script>
+        <sys_class_name>sys_script_email</sys_class_name>
+        <sys_created_by>nicholasmyers</sys_created_by>
+        <sys_created_on>2017-03-29 22:59:44</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>cf0b9d396f7d7a00ad6cd4a21c3ee442</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>x_casus_receiving_package_delivery_script_1</sys_name>
+        <sys_package display_value="Receiving &amp; Package Management" source="x_casus_receiving">86a7d81e6fad3600ad6cd4a21c3ee464</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Receiving &amp; Package Management">86a7d81e6fad3600ad6cd4a21c3ee464</sys_scope>
+        <sys_update_name>sys_script_email_cf0b9d396f7d7a00ad6cd4a21c3ee442</sys_update_name>
+        <sys_updated_by>nicholasmyers</sys_updated_by>
+        <sys_updated_on>2017-03-29 23:03:07</sys_updated_on>
+    </sys_script_email>
+</record_update>

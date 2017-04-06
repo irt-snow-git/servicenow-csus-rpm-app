@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_relationship">
+    <sys_relationship action="INSERT_OR_UPDATE">
+        <advanced>false</advanced>
+        <apply_to/>
+        <basic_apply_to>x_casus_receiving_delivery_run</basic_apply_to>
+        <basic_query_from>x_casus_receiving_package</basic_query_from>
+        <insert_callback/>
+        <name>Packages on Run</name>
+        <query_from/>
+        <query_with><![CDATA[current.addQuery('run', parent.sys_id);]]></query_with>
+        <reference_field>run</reference_field>
+        <related_list/>
+        <simple_reference>true</simple_reference>
+        <sys_class_name>sys_relationship</sys_class_name>
+        <sys_created_by>nicholasmyers</sys_created_by>
+        <sys_created_on>2017-03-23 18:38:56</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>39b5e5fb0f21f60012e4348ce1050eb4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Packages on Run</sys_name>
+        <sys_package display_value="Receiving &amp; Package Management" source="x_casus_receiving">86a7d81e6fad3600ad6cd4a21c3ee464</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Receiving &amp; Package Management">86a7d81e6fad3600ad6cd4a21c3ee464</sys_scope>
+        <sys_update_name>sys_relationship_39b5e5fb0f21f60012e4348ce1050eb4</sys_update_name>
+        <sys_updated_by>nicholasmyers</sys_updated_by>
+        <sys_updated_on>2017-03-23 18:38:56</sys_updated_on>
+    </sys_relationship>
+    <sys_translated_text action="delete_multiple" query="documentkey=39b5e5fb0f21f60012e4348ce1050eb4"/>
+</record_update>
