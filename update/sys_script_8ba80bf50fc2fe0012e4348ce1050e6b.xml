@@ -35,11 +35,6 @@
         <rest_variables/>
         <role_conditions/>
         <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
-
-	
-	gs.addInfoMessage("current document " + current.document);
-	
-	gs.addInfoMessage("current sys_id inserted " + current.sys_id);
 	
 	//copy the attachment from the signature image to the delivery table
 	copyAttachments('signature_image', current.sys_id, 'x_casus_receiving_package_delivery', current.document);
@@ -47,8 +42,6 @@
 	//now that the attachment is added, tick the 'signed' boolean on the delivery table
 	var dlv = new GlideRecord('x_casus_receiving_package_delivery');
 	dlv.get(current.document);
-	
-	gs.addInfoMessage("got item " + dlv.sys_id);
 	
 	dlv.signed = true;
 	dlv.update();
@@ -58,13 +51,13 @@
     Requires read and create application access to all scopes on sys_attachment and sys_attachment_doc tables 
     */  
     function copyAttachments(sourceTable, sourceID, targetTable, targetID) {  
+		
+		
         var att = new GlideRecord("sys_attachment");  
-        var tables = [sourceTable, sourceTable];  
-        att.addQuery("table_name", tables);  
+        att.addQuery("table_name", sourceTable);  
         att.addQuery("table_sys_id", sourceID);  
         att.query();  
         gs.info(att.getEncodedQuery());  
-        gs.info("copying " + att.getRowCount());  
       
         while (att.next()) {  
             //copy attachment record  
@@ -94,7 +87,7 @@
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>8ba80bf50fc2fe0012e4348ce1050e6b</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>Add Attachment to Package and Delivery</sys_name>
         <sys_overrides/>
         <sys_package display_value="Receiving &amp; Package Management" source="x_casus_receiving">86a7d81e6fad3600ad6cd4a21c3ee464</sys_package>
@@ -103,7 +96,7 @@
         <sys_scope display_value="Receiving &amp; Package Management">86a7d81e6fad3600ad6cd4a21c3ee464</sys_scope>
         <sys_update_name>sys_script_8ba80bf50fc2fe0012e4348ce1050e6b</sys_update_name>
         <sys_updated_by>nicholasmyers</sys_updated_by>
-        <sys_updated_on>2017-04-11 17:39:51</sys_updated_on>
+        <sys_updated_on>2017-04-11 19:39:05</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>

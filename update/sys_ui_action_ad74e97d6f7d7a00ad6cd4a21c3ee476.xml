@@ -2,10 +2,10 @@
 <record_update sys_domain="global" table="sys_ui_action">
     <sys_ui_action action="INSERT_OR_UPDATE">
         <action_name>sysverb_edit_o2m</action_name>
-        <active>true</active>
+        <active>false</active>
         <client>false</client>
         <comments>One to Many (reference floats)</comments>
-        <condition>(new GlideRecord(current.getTableName())).canWrite() &amp;&amp; RP.isOneToMany() &amp;&amp; !RP.getListControl().isOmitEditButton()</condition>
+        <condition>(new GlideRecord(current.getTableName())).canWrite()</condition>
         <form_action>false</form_action>
         <form_button>false</form_button>
         <form_context_menu>false</form_context_menu>
@@ -30,7 +30,7 @@ uri.set('sysparm_stack', 'no');
 uri.set('sysparm_form_type', 'o2m');
 //uri.set('sysparm_collection_relationship', null);
 action.setRedirectURL(uri.toString('sys_m2m_template.do'));*/
-
+/*
 var uri = action.getGlideURI();
 var path = uri.getFileFromPath();
 uri.set('sysparm_m2m_ref', current.getTableName());
@@ -41,7 +41,7 @@ updateQuery(uri);
 action.setRedirectURL(uri.toString('sys_m2m_template.do'));
 
 
-/* filter stories based on parent release team */
+/* filter stories based on parent release team 
 function updateQuery(uri) {
 	var filter = '';
 	var parentID = uri.get('sysparm_collectionID');
@@ -50,7 +50,12 @@ function updateQuery(uri) {
 	var query = "active=true^state=received^ORstate=sorting";
 	
 	uri.set('sysparm_query',query);
-}]]></script>
+}*/
+
+current.update();
+
+var url = new global.RMv2Relationships().planningBoardURL('x_casus_receiving_package', current);
+gs.setRedirect(url);]]></script>
         <show_insert>true</show_insert>
         <show_multiple_update>false</show_multiple_update>
         <show_query>false</show_query>
@@ -61,16 +66,16 @@ function updateQuery(uri) {
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>ad74e97d6f7d7a00ad6cd4a21c3ee476</sys_id>
-        <sys_mod_count>32</sys_mod_count>
+        <sys_mod_count>36</sys_mod_count>
         <sys_name>Edit...</sys_name>
         <sys_overrides/>
         <sys_package display_value="Receiving &amp; Package Management" source="x_casus_receiving">86a7d81e6fad3600ad6cd4a21c3ee464</sys_package>
         <sys_policy/>
-        <sys_replace_on_upgrade>true</sys_replace_on_upgrade>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Receiving &amp; Package Management">86a7d81e6fad3600ad6cd4a21c3ee464</sys_scope>
         <sys_update_name>sys_ui_action_ad74e97d6f7d7a00ad6cd4a21c3ee476</sys_update_name>
         <sys_updated_by>nicholasmyers</sys_updated_by>
-        <sys_updated_on>2017-04-11 18:30:43</sys_updated_on>
+        <sys_updated_on>2017-04-11 20:34:36</sys_updated_on>
         <table>x_casus_receiving_package</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>

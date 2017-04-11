@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update sys_domain="global" table="sys_ui_action">
     <sys_ui_action action="INSERT_OR_UPDATE">
-        <action_name/>
+        <action_name>sysverb_insert_and_stay</action_name>
         <active>true</active>
-        <client>true</client>
-        <comments/>
-        <condition>current.signed == false</condition>
+        <client>false</client>
+        <comments>Inserts current record and redirects to new record</comments>
+        <condition>isAdvancedUI() &amp;&amp; current.canCreate() &amp;&amp; current.stage == 'draft' &amp;&amp; current.return_from_tol.nil()</condition>
         <form_action>true</form_action>
         <form_button>true</form_button>
         <form_context_menu>false</form_context_menu>
@@ -18,42 +18,37 @@
         <list_context_menu>false</list_context_menu>
         <list_link>false</list_link>
         <list_save_with_form_button>false</list_save_with_form_button>
-        <name>Get Signature</name>
-        <onclick>openDialog()</onclick>
+        <name>Save</name>
+        <onclick/>
         <order>100</order>
-        <script><![CDATA[function openDialog() {
-	
-	//call the accept signature ui page from the SignaturePad plugin
-	var dialog = new GlideDialogWindow('accept_signature');
-	dialog.setTitle('Package sign-off');
-	dialog.setWidth("500");
-	dialog.setPreference('sysparm_document_id', g_form.getUniqueValue() + "");
-	dialog.setPreference('sysparm_table_name', 'x_casus_receiving_package_delivery');
-	dialog.setPreference('sysparm_draw_only', 'true');
-	dialog.render();
-
-	return true;
+        <script><![CDATA[doInsertAndStay();
+function doInsertAndStay() {
+    var saveMe = current;
+    if (typeof current.number != 'undefined' && current.number)
+        current.number = ""; // generate a new number
+    current.insert();
+    action.setRedirectURL(saveMe);
 }]]></script>
-        <show_insert>false</show_insert>
+        <show_insert>true</show_insert>
         <show_multiple_update>false</show_multiple_update>
         <show_query>false</show_query>
-        <show_update>true</show_update>
+        <show_update>false</show_update>
         <sys_class_name>sys_ui_action</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
-        <sys_created_on>2017-04-11 16:31:09</sys_created_on>
+        <sys_created_on>2017-04-11 19:44:41</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
-        <sys_id>daae36f90f82fe0012e4348ce1050e49</sys_id>
-        <sys_mod_count>5</sys_mod_count>
-        <sys_name>Get Signature</sys_name>
+        <sys_id>db8ae7350f06fe0012e4348ce1050e16</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Save</sys_name>
         <sys_overrides/>
         <sys_package display_value="Receiving &amp; Package Management" source="x_casus_receiving">86a7d81e6fad3600ad6cd4a21c3ee464</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Receiving &amp; Package Management">86a7d81e6fad3600ad6cd4a21c3ee464</sys_scope>
-        <sys_update_name>sys_ui_action_daae36f90f82fe0012e4348ce1050e49</sys_update_name>
+        <sys_update_name>sys_ui_action_db8ae7350f06fe0012e4348ce1050e16</sys_update_name>
         <sys_updated_by>nicholasmyers</sys_updated_by>
-        <sys_updated_on>2017-04-11 19:02:34</sys_updated_on>
+        <sys_updated_on>2017-04-11 19:44:41</sys_updated_on>
         <table>x_casus_receiving_package_delivery</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>true</ui16_compatible>
