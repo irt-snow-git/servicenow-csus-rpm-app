@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_label/>
+        <action_name/>
+        <action_query>false</action_query>
+        <action_run_at>server</action_run_at>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <application/>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>signature_image</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Add Attachment to Package and Delivery</name>
+        <onclick/>
+        <order>100</order>
+        <priority>100</priority>
+        <read_access_action>false</read_access_action>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+	
+	gs.addInfoMessage("current document " + current.document);
+	
+	gs.addInfoMessage("current sys_id inserted " + current.sys_id);
+	
+	//copy the attachment from the signature image to the delivery table
+	copyAttachments('signature_image', current.sys_id, 'x_casus_receiving_package_delivery', current.document);
+	
+	//now that the attachment is added, tick the 'signed' boolean on the delivery table
+	var dlv = new GlideRecord('x_casus_receiving_package_delivery');
+	dlv.get(current.document);
+	
+	gs.addInfoMessage("got item " + dlv.sys_id);
+	
+	dlv.signed = true;
+	dlv.update();
+	
+	
+	 /* 
+    Requires read and create application access to all scopes on sys_attachment and sys_attachment_doc tables 
+    */  
+    function copyAttachments(sourceTable, sourceID, targetTable, targetID) {  
+        var att = new GlideRecord("sys_attachment");  
+        var tables = [sourceTable, sourceTable];  
+        att.addQuery("table_name", tables);  
+        att.addQuery("table_sys_id", sourceID);  
+        att.query();  
+        gs.info(att.getEncodedQuery());  
+        gs.info("copying " + att.getRowCount());  
+      
+        while (att.next()) {  
+            //copy attachment record  
+            var oldSysID = att.getUniqueValue();  
+            var targetName = targetTable;  
+            var sourceName = att.getValue("table_name");  
+         
+            att.setValue("table_name", targetName);  
+            att.setValue("table_sys_id", targetID);  
+            var newSysID = att.insert();  
+         
+            //copy attachment doc records  
+            var doc = new GlideRecord("sys_attachment_doc");  
+            doc.addQuery("sys_attachment", oldSysID);  
+            doc.query();  
+            while (doc.next()) {  
+                doc.setValue("sys_attachment", newSysID);  
+                doc.insert();  
+            }  
+        }  
+    }  
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>nicholasmyers</sys_created_by>
+        <sys_created_on>2017-04-11 17:16:58</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>8ba80bf50fc2fe0012e4348ce1050e6b</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Add Attachment to Package and Delivery</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Receiving &amp; Package Management" source="x_casus_receiving">86a7d81e6fad3600ad6cd4a21c3ee464</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Receiving &amp; Package Management">86a7d81e6fad3600ad6cd4a21c3ee464</sys_scope>
+        <sys_update_name>sys_script_8ba80bf50fc2fe0012e4348ce1050e6b</sys_update_name>
+        <sys_updated_by>nicholasmyers</sys_updated_by>
+        <sys_updated_on>2017-04-11 17:39:51</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+</record_update>

@@ -7,7 +7,7 @@
         <sys_class_name>sys_scope_privilege</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
         <sys_created_on>2017-03-23 23:41:17</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>190b62bb6fe1f600ad6cd4a21c3ee4e5</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>SysRelatedList</sys_name>

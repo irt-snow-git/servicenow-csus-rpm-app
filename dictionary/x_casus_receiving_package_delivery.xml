@@ -7,9 +7,10 @@
         <element label="Delivery Location" max_length="32" name="delivery_location" reference="cmn_location" type="reference"/>
         <element label="Deliver to" max_length="32" name="deliver_to" reference="sys_user" type="reference"/>
         <element default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" read_only="true" type="string"/>
-        <element attributes="ref_auto_completer=AJAXTableCompleter,ref_ac_columns=tracking_number;number,requester_officeref_ac_order_by=tracking_number,ref_ac_columns_search=true" label="Package" max_length="32" name="package" reference="x_casus_receiving_package" reference_qual="active=true^EQ" reference_qual_condition="active=true^EQ" type="reference"/>
+        <element label="Package" max_length="32" name="pkg" reference="x_casus_receiving_package" reference_qual="active=true^state!=delivered^EQ" reference_qual_condition="active=true^state!=delivered^EQ" type="reference"/>
         <element label="Received by" mandatory="true" max_length="32" name="received_by" reference="sys_user" type="reference"/>
         <element label="Run" mandatory="true" max_length="32" name="run" reference="x_casus_receiving_delivery_run" reference_qual="stateIN1,2^EQ" reference_qual_condition="stateIN1,2^EQ" type="reference"/>
+        <element label="Signed" max_length="40" name="signed" read_only="true" type="boolean"/>
         <element attributes="barcode=true" label="Tracking Number" mandatory="true" max_length="40" name="tracking_number" reference_qual="active=true^state=out_for_delivery^EQ" reference_qual_condition="active=true^state=out_for_delivery^EQ" type="string"/>
         <index name="index">
             <element name="delivered_by"/>
@@ -18,16 +19,16 @@
             <element name="received_by"/>
         </index>
         <index name="index3">
-            <element name="package"/>
-        </index>
-        <index name="index4">
             <element name="deliver_to"/>
         </index>
-        <index name="index5">
+        <index name="index4">
             <element name="run"/>
         </index>
-        <index name="index6">
+        <index name="index5">
             <element name="delivery_location"/>
+        </index>
+        <index name="index6">
+            <element name="pkg"/>
         </index>
     </element>
 </database>

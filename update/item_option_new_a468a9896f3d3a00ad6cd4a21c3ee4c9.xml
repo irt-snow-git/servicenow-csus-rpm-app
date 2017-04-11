@@ -59,7 +59,7 @@
         <sys_class_name>item_option_new</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
         <sys_created_on>2017-03-27 16:03:17</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>a468a9896f3d3a00ad6cd4a21c3ee4c9</sys_id>
         <sys_mod_count>2</sys_mod_count>
         <sys_name>Deliver to</sys_name>

@@ -71,6 +71,34 @@
             <sys_user/>
             <type/>
         </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>pkg</element>
+            <position>5</position>
+            <sys_created_by>nicholasmyers</sys_created_by>
+            <sys_created_on>2017-04-11 16:38:00</sys_created_on>
+            <sys_id>ce50873d0f82fe0012e4348ce1050e4c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Package Delivery" display_value="Package Delivery" name="x_casus_receiving_package_delivery" sys_domain="global" view="Default view">52b46dbb0f21f60012e4348ce1050e7b</sys_ui_section>
+            <sys_updated_by>nicholasmyers</sys_updated_by>
+            <sys_updated_on>2017-04-11 16:38:00</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>signed</element>
+            <position>6</position>
+            <sys_created_by>nicholasmyers</sys_created_by>
+            <sys_created_on>2017-04-11 17:05:47</sys_created_on>
+            <sys_id>b0b603750fc2fe0012e4348ce1050e5f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Package Delivery" display_value="Package Delivery" name="x_casus_receiving_package_delivery" sys_domain="global" view="Default view">52b46dbb0f21f60012e4348ce1050e7b</sys_ui_section>
+            <sys_updated_by>nicholasmyers</sys_updated_by>
+            <sys_updated_on>2017-04-11 17:05:47</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
         <sys_ui_section action="INSERT_OR_UPDATE">
             <caption>Package Delivery</caption>
             <header>false</header>
@@ -79,10 +107,10 @@
             <sys_class_name>sys_ui_section</sys_class_name>
             <sys_created_by>nicholasmyers</sys_created_by>
             <sys_created_on>2017-03-23 18:34:10</sys_created_on>
-            <sys_customer_update>true</sys_customer_update>
+            <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_id>52b46dbb0f21f60012e4348ce1050e7b</sys_id>
-            <sys_mod_count>1</sys_mod_count>
+            <sys_mod_count>4</sys_mod_count>
             <sys_name>Package Delivery</sys_name>
             <sys_overrides display_value="">global</sys_overrides>
             <sys_package display_value="Receiving &amp; Package Management" source="x_casus_receiving">86a7d81e6fad3600ad6cd4a21c3ee464</sys_package>
@@ -91,7 +119,7 @@
             <sys_scope display_value="Receiving &amp; Package Management">86a7d81e6fad3600ad6cd4a21c3ee464</sys_scope>
             <sys_update_name>sys_ui_section_52b46dbb0f21f60012e4348ce1050e7b</sys_update_name>
             <sys_updated_by>nicholasmyers</sys_updated_by>
-            <sys_updated_on>2017-03-23 18:55:05</sys_updated_on>
+            <sys_updated_on>2017-04-11 17:05:47</sys_updated_on>
             <sys_user/>
             <title>false</title>
             <view display_value="Default view" name="NULL">Default view</view>

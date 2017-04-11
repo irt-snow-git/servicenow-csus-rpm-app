@@ -317,7 +317,7 @@ RetrievePackageCarrierInfo.prototype = Object.extendsObject(global.AbstractAjaxP
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
         <sys_created_on>2017-03-19 22:16:21</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>625ce1ae6f657600ad6cd4a21c3ee42d</sys_id>
         <sys_mod_count>56</sys_mod_count>
         <sys_name>RetrievePackageCarrierInfo</sys_name>

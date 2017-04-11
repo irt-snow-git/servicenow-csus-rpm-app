@@ -12,7 +12,7 @@
         <sys_class_name>sys_user_role</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
         <sys_created_on>2017-03-19 18:40:38</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>6b9f746e6f257600ad6cd4a21c3ee400</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_casus_receiving.manager</sys_name>

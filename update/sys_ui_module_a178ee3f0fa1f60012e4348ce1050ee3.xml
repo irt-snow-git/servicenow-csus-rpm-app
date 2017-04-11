@@ -12,18 +12,18 @@
         <sys_class_name>sys_ui_module</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
         <sys_created_on>2017-03-23 23:31:52</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>a178ee3f0fa1f60012e4348ce1050ee3</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>Log a Package Delivered</sys_name>
         <sys_package display_value="Receiving &amp; Package Management" source="x_casus_receiving">86a7d81e6fad3600ad6cd4a21c3ee464</sys_package>
         <sys_policy/>
-        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_replace_on_upgrade>true</sys_replace_on_upgrade>
         <sys_scope display_value="Receiving &amp; Package Management">86a7d81e6fad3600ad6cd4a21c3ee464</sys_scope>
         <sys_update_name>sys_ui_module_a178ee3f0fa1f60012e4348ce1050ee3</sys_update_name>
         <sys_updated_by>nicholasmyers</sys_updated_by>
-        <sys_updated_on>2017-03-23 23:51:00</sys_updated_on>
+        <sys_updated_on>2017-04-11 16:37:06</sys_updated_on>
         <table>x_casus_receiving_package_delivery</table>
         <uncancelable>false</uncancelable>
         <view_name/>

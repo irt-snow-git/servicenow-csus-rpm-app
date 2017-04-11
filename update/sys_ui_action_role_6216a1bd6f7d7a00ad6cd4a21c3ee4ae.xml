@@ -4,7 +4,7 @@
         <sys_class_name>sys_ui_action_role</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
         <sys_created_on>2017-03-29 23:48:18</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>6216a1bd6f7d7a00ad6cd4a21c3ee4ae</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Edit....x_casus_receiving.user</sys_name>

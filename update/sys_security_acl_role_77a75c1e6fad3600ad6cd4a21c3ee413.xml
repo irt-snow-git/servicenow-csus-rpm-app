@@ -4,7 +4,7 @@
         <sys_class_name>sys_security_acl_role</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
         <sys_created_on>2017-03-18 21:06:41</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>77a75c1e6fad3600ad6cd4a21c3ee413</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_casus_receiving_package.x_casus_receiving.user</sys_name>

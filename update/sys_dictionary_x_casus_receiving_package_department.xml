@@ -51,8 +51,8 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
         <sys_created_on>2017-03-19 19:44:09</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
-        <sys_id>f69b456e6f257600ad6cd4a21c3ee406</sys_id>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>cc6eba790f82fe0012e4348ce1050eb3</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Department</sys_name>
         <sys_package display_value="Receiving &amp; Package Management" source="x_casus_receiving">86a7d81e6fad3600ad6cd4a21c3ee464</sys_package>
@@ -60,8 +60,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Receiving &amp; Package Management">86a7d81e6fad3600ad6cd4a21c3ee464</sys_scope>
         <sys_update_name>sys_dictionary_x_casus_receiving_package_department</sys_update_name>
-        <sys_updated_by>nicholasmyers</sys_updated_by>
-        <sys_updated_on>2017-03-19 19:44:09</sys_updated_on>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2017-04-11 16:29:37</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

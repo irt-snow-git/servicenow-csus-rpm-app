@@ -6,7 +6,7 @@
         <sys_class_name>sc_cat_item_catalog</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
         <sys_created_on>2017-03-27 16:02:09</sys_created_on>
-        <sys_customer_update>true</sys_customer_update>
+        <sys_customer_update>false</sys_customer_update>
         <sys_id>f248a1896f3d3a00ad6cd4a21c3ee4d5</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>Service Catalog.Log a Package Delivery</sys_name>

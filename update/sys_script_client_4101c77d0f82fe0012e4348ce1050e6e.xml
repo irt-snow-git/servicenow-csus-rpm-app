@@ -4,67 +4,74 @@
         <active>true</active>
         <applies_extended>false</applies_extended>
         <condition/>
-        <description>Populate all related package delivery fields when the package reference is added.</description>
-        <field>package</field>
+        <description/>
+        <field>pkg</field>
         <global>true</global>
         <messages/>
-        <name>PopulatePackageFieldsOnReferenceChange</name>
+        <name>Populate Package Information</name>
         <order/>
         <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
-   if (newValue == '') {
-	   g_form.setValue("deliver_to", "");
-	   g_form.setValue("delivery_location", "");
-	   g_form.setValue("run", "");
+   if (newValue === '') {
+	   g_form.setValue('run', '');
+	   g_form.setValue('delivery_location', '');
+	   g_form.setValue('deliver_to', '');
       return;
    }
 
-   //set values for package related fields based on the package added as a reference.
+	//get the carrier and tracking information
 	var ga = new GlideAjax("RetrievePackageInfo");
+	// add name parameter to define which function we want to call
+	// method name in script include will be getFavorites
 	ga.addParam("sysparm_name", "getPackageInfo");
 	ga.addParam('sysparm_pkg_id', newValue);
-	ga.getXML(ajaxResponse);
+	ga.getXML(ajaxResponse1);
 	
-	function ajaxResponse(serverResponse) {
-		// get result element and attributes
+	
+	function ajaxResponse1(serverResponse) {
 		
+		// get result element and attributes	
 		var result = serverResponse.responseXML.getElementsByTagName("result");
 		var message = result[0].getAttribute("message");
-		
-		// get package elements
+			
+		// get package carrier elements
 		var info = serverResponse.responseXML.getElementsByTagName("pkgInfo");
-		
 		for(var i = 0; i < info.length; i++) {
 			var name = info[i].getAttribute("name");
 			var value = info[i].getAttribute("value");
+				
+			//this function will receive empty strings if a carrier is not found.
+			//if a carrier is not found, set carrier and service to "Other"
 			
-			if(name == 'deliver_to'){
-				g_form.setValue('deliver_to',value);
-			}
-			if(name == 'requester_office'){
-				g_form.setValue('delivery_location',value);
-			}
 			if(name == 'run'){
-				g_form.setValue('run',value);
+				if(value != '')
+					 g_form.setValue('run', value);
+			}
+			if(name == 'requester_office') {
+				 g_form.setValue('delivery_location', value);
+			}
+			if(name == 'deliver_to') {
+			   g_form.setValue('deliver_to', value);
 			}
 		}
 	}
+   
 }]]></script>
         <sys_class_name>sys_script_client</sys_class_name>
         <sys_created_by>nicholasmyers</sys_created_by>
-        <sys_created_on>2017-03-23 21:35:48</sys_created_on>
+        <sys_created_on>2017-04-11 16:46:33</sys_created_on>
         <sys_customer_update>true</sys_customer_update>
         <sys_domain>global</sys_domain>
-        <sys_id>52fcce7f0f61f60012e4348ce1050e24</sys_id>
-        <sys_mod_count>4</sys_mod_count>
-        <sys_name>PopulatePackageFieldsOnReferenceChange</sys_name>
+        <sys_id>4101c77d0f82fe0012e4348ce1050e6e</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Populate Package Information</sys_name>
         <sys_overrides display_value="">global</sys_overrides>
         <sys_package display_value="Receiving &amp; Package Management" source="x_casus_receiving">86a7d81e6fad3600ad6cd4a21c3ee464</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Receiving &amp; Package Management">86a7d81e6fad3600ad6cd4a21c3ee464</sys_scope>
-        <sys_update_name>sys_script_client_52fcce7f0f61f60012e4348ce1050e24</sys_update_name>
+        <sys_update_name>sys_script_client_4101c77d0f82fe0012e4348ce1050e6e</sys_update_name>
         <sys_updated_by>nicholasmyers</sys_updated_by>
-        <sys_updated_on>2017-03-27 15:30:41</sys_updated_on>
+        <sys_updated_on>2017-04-11 17:50:50</sys_updated_on>
         <table>x_casus_receiving_package_delivery</table>
         <type>onChange</type>
         <ui_type>10</ui_type>

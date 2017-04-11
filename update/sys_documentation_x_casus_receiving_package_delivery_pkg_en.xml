@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update>
-    <sys_documentation element="package" label="Package" language="en" table="x_casus_receiving_package_delivery">
+    <sys_documentation element="pkg" label="Package" language="en" table="x_casus_receiving_package_delivery">
         <sys_documentation action="INSERT_OR_UPDATE">
-            <element>package</element>
+            <element>pkg</element>
             <help/>
             <hint/>
             <label>Package</label>
@@ -11,18 +11,18 @@
             <plural>Packages</plural>
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>nicholasmyers</sys_created_by>
-            <sys_created_on>2017-03-27 15:26:40</sys_created_on>
+            <sys_created_on>2017-04-11 16:38:00</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
-            <sys_id>fe20e9c56f3d3a00ad6cd4a21c3ee459</sys_id>
+            <sys_id>ca50873d0f82fe0012e4348ce1050e4d</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>Package</sys_name>
             <sys_package display_value="Receiving &amp; Package Management" source="x_casus_receiving">86a7d81e6fad3600ad6cd4a21c3ee464</sys_package>
             <sys_policy/>
             <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
             <sys_scope display_value="Receiving &amp; Package Management">86a7d81e6fad3600ad6cd4a21c3ee464</sys_scope>
-            <sys_update_name>sys_documentation_x_casus_receiving_package_delivery_package_en</sys_update_name>
+            <sys_update_name>sys_documentation_x_casus_receiving_package_delivery_pkg_en</sys_update_name>
             <sys_updated_by>nicholasmyers</sys_updated_by>
-            <sys_updated_on>2017-03-27 15:26:40</sys_updated_on>
+            <sys_updated_on>2017-04-11 16:38:00</sys_updated_on>
             <url/>
             <url_target/>
         </sys_documentation>
