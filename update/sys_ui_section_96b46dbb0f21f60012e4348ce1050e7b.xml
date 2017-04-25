@@ -110,16 +110,16 @@
             <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_id>96b46dbb0f21f60012e4348ce1050e7b</sys_id>
-            <sys_mod_count>2</sys_mod_count>
+            <sys_mod_count>3</sys_mod_count>
             <sys_name>Delivery Information</sys_name>
             <sys_overrides display_value="">global</sys_overrides>
             <sys_package display_value="Receiving &amp; Package Management" source="x_casus_receiving">86a7d81e6fad3600ad6cd4a21c3ee464</sys_package>
             <sys_policy/>
-            <sys_replace_on_upgrade>true</sys_replace_on_upgrade>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
             <sys_scope display_value="Receiving &amp; Package Management">86a7d81e6fad3600ad6cd4a21c3ee464</sys_scope>
             <sys_update_name>sys_ui_section_96b46dbb0f21f60012e4348ce1050e7b</sys_update_name>
             <sys_updated_by>nicholasmyers</sys_updated_by>
-            <sys_updated_on>2017-04-11 16:37:09</sys_updated_on>
+            <sys_updated_on>2017-04-25 16:33:25</sys_updated_on>
             <sys_user/>
             <title>false</title>
             <view display_value="Default view" name="NULL">Default view</view>

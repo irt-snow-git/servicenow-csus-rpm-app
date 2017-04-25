@@ -4,7 +4,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>number</element>
-            <list_id display_value="x_casus_receiving_package" element="NULL" name="x_casus_receiving_package" parent="x_casus_receiving_delivery_run" relationship="39b5e5fb0f21f60012e4348ce1050eb4" sys_domain="global" view="Default view">021a1bbd0fc2fe0012e4348ce1050e76</list_id>
+            <list_id display_value="x_casus_receiving_package" element="NULL" name="x_casus_receiving_package" parent="x_casus_receiving_delivery_run" relationship="39b5e5fb0f21f60012e4348ce1050eb4" sys_domain="global" view="Default view">281bd3fd0fc2fe0012e4348ce1050e69</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>0</position>
@@ -19,7 +19,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>active</element>
-            <list_id display_value="x_casus_receiving_package" element="NULL" name="x_casus_receiving_package" parent="x_casus_receiving_delivery_run" relationship="39b5e5fb0f21f60012e4348ce1050eb4" sys_domain="global" view="Default view">021a1bbd0fc2fe0012e4348ce1050e76</list_id>
+            <list_id display_value="x_casus_receiving_package" element="NULL" name="x_casus_receiving_package" parent="x_casus_receiving_delivery_run" relationship="39b5e5fb0f21f60012e4348ce1050eb4" sys_domain="global" view="Default view">281bd3fd0fc2fe0012e4348ce1050e69</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>1</position>
@@ -34,7 +34,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>carrier</element>
-            <list_id display_value="x_casus_receiving_package" element="NULL" name="x_casus_receiving_package" parent="x_casus_receiving_delivery_run" relationship="39b5e5fb0f21f60012e4348ce1050eb4" sys_domain="global" view="Default view">021a1bbd0fc2fe0012e4348ce1050e76</list_id>
+            <list_id display_value="x_casus_receiving_package" element="NULL" name="x_casus_receiving_package" parent="x_casus_receiving_delivery_run" relationship="39b5e5fb0f21f60012e4348ce1050eb4" sys_domain="global" view="Default view">281bd3fd0fc2fe0012e4348ce1050e69</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>2</position>
@@ -49,7 +49,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>deliver_to</element>
-            <list_id display_value="x_casus_receiving_package" element="NULL" name="x_casus_receiving_package" parent="x_casus_receiving_delivery_run" relationship="39b5e5fb0f21f60012e4348ce1050eb4" sys_domain="global" view="Default view">021a1bbd0fc2fe0012e4348ce1050e76</list_id>
+            <list_id display_value="x_casus_receiving_package" element="NULL" name="x_casus_receiving_package" parent="x_casus_receiving_delivery_run" relationship="39b5e5fb0f21f60012e4348ce1050eb4" sys_domain="global" view="Default view">281bd3fd0fc2fe0012e4348ce1050e69</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>3</position>
@@ -64,7 +64,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>delivered</element>
-            <list_id display_value="x_casus_receiving_package" element="NULL" name="x_casus_receiving_package" parent="x_casus_receiving_delivery_run" relationship="39b5e5fb0f21f60012e4348ce1050eb4" sys_domain="global" view="Default view">021a1bbd0fc2fe0012e4348ce1050e76</list_id>
+            <list_id display_value="x_casus_receiving_package" element="NULL" name="x_casus_receiving_package" parent="x_casus_receiving_delivery_run" relationship="39b5e5fb0f21f60012e4348ce1050eb4" sys_domain="global" view="Default view">281bd3fd0fc2fe0012e4348ce1050e69</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>4</position>
@@ -79,7 +79,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>department</element>
-            <list_id display_value="x_casus_receiving_package" element="NULL" name="x_casus_receiving_package" parent="x_casus_receiving_delivery_run" relationship="39b5e5fb0f21f60012e4348ce1050eb4" sys_domain="global" view="Default view">021a1bbd0fc2fe0012e4348ce1050e76</list_id>
+            <list_id display_value="x_casus_receiving_package" element="NULL" name="x_casus_receiving_package" parent="x_casus_receiving_delivery_run" relationship="39b5e5fb0f21f60012e4348ce1050eb4" sys_domain="global" view="Default view">281bd3fd0fc2fe0012e4348ce1050e69</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>5</position>
@@ -94,7 +94,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>department_office</element>
-            <list_id display_value="x_casus_receiving_package" element="NULL" name="x_casus_receiving_package" parent="x_casus_receiving_delivery_run" relationship="39b5e5fb0f21f60012e4348ce1050eb4" sys_domain="global" view="Default view">021a1bbd0fc2fe0012e4348ce1050e76</list_id>
+            <list_id display_value="x_casus_receiving_package" element="NULL" name="x_casus_receiving_package" parent="x_casus_receiving_delivery_run" relationship="39b5e5fb0f21f60012e4348ce1050eb4" sys_domain="global" view="Default view">281bd3fd0fc2fe0012e4348ce1050e69</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>6</position>
@@ -109,7 +109,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>email</element>
-            <list_id display_value="x_casus_receiving_package" element="NULL" name="x_casus_receiving_package" parent="x_casus_receiving_delivery_run" relationship="39b5e5fb0f21f60012e4348ce1050eb4" sys_domain="global" view="Default view">021a1bbd0fc2fe0012e4348ce1050e76</list_id>
+            <list_id display_value="x_casus_receiving_package" element="NULL" name="x_casus_receiving_package" parent="x_casus_receiving_delivery_run" relationship="39b5e5fb0f21f60012e4348ce1050eb4" sys_domain="global" view="Default view">281bd3fd0fc2fe0012e4348ce1050e69</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>7</position>
@@ -124,7 +124,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>phone</element>
-            <list_id display_value="x_casus_receiving_package" element="NULL" name="x_casus_receiving_package" parent="x_casus_receiving_delivery_run" relationship="39b5e5fb0f21f60012e4348ce1050eb4" sys_domain="global" view="Default view">021a1bbd0fc2fe0012e4348ce1050e76</list_id>
+            <list_id display_value="x_casus_receiving_package" element="NULL" name="x_casus_receiving_package" parent="x_casus_receiving_delivery_run" relationship="39b5e5fb0f21f60012e4348ce1050eb4" sys_domain="global" view="Default view">281bd3fd0fc2fe0012e4348ce1050e69</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>8</position>
@@ -139,7 +139,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>purchase_order</element>
-            <list_id display_value="x_casus_receiving_package" element="NULL" name="x_casus_receiving_package" parent="x_casus_receiving_delivery_run" relationship="39b5e5fb0f21f60012e4348ce1050eb4" sys_domain="global" view="Default view">021a1bbd0fc2fe0012e4348ce1050e76</list_id>
+            <list_id display_value="x_casus_receiving_package" element="NULL" name="x_casus_receiving_package" parent="x_casus_receiving_delivery_run" relationship="39b5e5fb0f21f60012e4348ce1050eb4" sys_domain="global" view="Default view">281bd3fd0fc2fe0012e4348ce1050e69</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>9</position>
@@ -166,7 +166,7 @@
             <sys_created_on>2017-04-11 18:37:35</sys_created_on>
             <sys_customer_update>true</sys_customer_update>
             <sys_domain>global</sys_domain>
-            <sys_id>f1bb17fd0fc2fe0012e4348ce1050e91</sys_id>
+            <sys_id>281bd3fd0fc2fe0012e4348ce1050e69</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>x_casus_receiving_package</sys_name>
             <sys_package display_value="Receiving &amp; Package Management" source="x_casus_receiving">86a7d81e6fad3600ad6cd4a21c3ee464</sys_package>

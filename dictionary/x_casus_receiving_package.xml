@@ -68,8 +68,5 @@
         <index name="index6">
             <element name="department_office"/>
         </index>
-        <index name="index7">
-            <element name="tracking_number"/>
-        </index>
     </element>
 </database>
